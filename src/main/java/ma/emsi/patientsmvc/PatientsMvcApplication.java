@@ -29,6 +29,7 @@ CommandLineRunner commandLineRunner(PatientRepository patientRepository){
           System.out.println(p.getScore());
           System.out.println(p.getId());
       });
+            System.out.println("p.getNom()");
         };
 }
 }
