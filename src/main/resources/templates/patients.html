@@ -19,7 +19,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     <h3>Liste des patients</h3>
 </div>
         <div class="card-body">
-            <form method="get" th:action="@{index}">
+            <form method="get" th:action="@{/user/index}">
                 <label>Key Word</label>
                 <input type="text" name="keyword" th:value="${keyword}">
                 <button type="submit" class="btn-outline-primary">Chercher</button>
@@ -43,9 +43,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                     <td th:text="${p.malade}"></td>
                     <td th:text="${p.score}"></td>
 
-                    <td sec:authorize="hasRole('ADMIN')" > <a onclick="return confirm('vs etes sure ?')" class="btn btn-danger" th:href="@{delete(id=${p.id} ,keyword=${keyword}, page=${currentPage })}">Delete</a></td>
+                    <td sec:authorize="hasRole('ADMIN')" > <a onclick="return confirm('vs etes sure ?')" class="btn btn-danger" th:href="@{/admin/delete(id=${p.id} ,keyword=${keyword}, page=${currentPage })}">Delete</a></td>
 
-                    <td sec:authorize="hasRole('ADMIN')"> <a  class="btn btn-success" th:href="@{editPatient(id=${p.id} , page=${currentPage}  )}">Edit</a></td>
+                    <td sec:authorize="hasRole('ADMIN')"> <a  class="btn btn-success" th:href="@{/admin/editPatient(id=${p.id} , page=${currentPage}  )}">Edit</a></td>
 
                 </tr>
 
@@ -55,7 +55,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                 <li th:each="page,status:${pages}">
                     <a th:class="${status.index==currentPage?'btn btn-primary ms-1':'btn btn-outline-primary ms-1'}" class="btn btn-outline-info m-lg-1"
                        th:text="${status.index}"
-                    th:href="@{index(page=${status.index },keyword=${keyword})}">
+                    th:href="@{/user/index(page=${status.index },keyword=${keyword})}">
 
                     </a>
 
